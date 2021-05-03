@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.thrift'
+version '1.0-SNAPSHOT'
+mainClassName = 'two.factor.auth.App'
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    // Spark framework
+    implementation 'com.sparkjava:spark-core:2.8.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.21'
+    // Nexmo client library
+    implementation 'com.nexmo:client:5.3.0'
+
+    // Templating engine
+    implementation 'com.sparkjava:spark-template-handlebars:2.7.1'
+}
+application {
+    // Define the main class for the application
+    mainClassName = 'two.factor.auth.App'
+}
+test {
+    useJUnitPlatform()
+}
