@@ -21,6 +21,9 @@ dependencies {
 
     // Templating engine
     implementation 'com.sparkjava:spark-template-handlebars:2.7.1'
+    implementation 'org.sql2o:sql2o:1.5.4'
+    implementation group:'com.h2database', name: 'h2', version: '1.4.191'
+
 }
 application {
     // Define the main class for the application
