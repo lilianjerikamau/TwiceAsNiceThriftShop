@@ -5,7 +5,9 @@ plugins {
 
 group 'org.thrift'
 version '1.0-SNAPSHOT'
-mainClassName = 'two.factor.auth.App'
+
+mainClassName = 'App'
+
 repositories {
     mavenCentral()
 }
@@ -26,11 +28,4 @@ dependencies {
     implementation 'org.mindrot:jbcrypt:0.3m'
     implementation 'org.pac4j:ratpack-pac4j:3.0.0'
 
-}
-application {
-    // Define the main class for the application
-    mainClassName = 'two.factor.auth.App'
-}
-test {
-    useJUnitPlatform()
 }
