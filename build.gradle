@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.sql2o:sql2o:1.5.4'
     implementation group:'com.h2database', name: 'h2', version: '1.4.191'
     implementation 'org.mindrot:jbcrypt:0.3m'
+    implementation 'org.pac4j:ratpack-pac4j:3.0.0'
 
 }
 application {
