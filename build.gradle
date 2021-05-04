@@ -5,7 +5,9 @@ plugins {
 
 group 'org.thrift'
 version '1.0-SNAPSHOT'
-mainClassName = 'two.factor.auth.App'
+
+mainClassName = 'App'
+
 repositories {
     mavenCentral()
 }
@@ -25,11 +27,4 @@ dependencies {
     implementation group:'com.h2database', name: 'h2', version: '1.4.191'
     implementation 'org.mindrot:jbcrypt:0.3m'
 
-}
-application {
-    // Define the main class for the application
-    mainClassName = 'two.factor.auth.App'
-}
-test {
-    useJUnitPlatform()
 }
