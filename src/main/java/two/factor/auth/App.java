@@ -1,63 +1,36 @@
 package two.factor.auth;
-import static spark.Spark.*;
-import com.nexmo.client.NexmoClient;
-import com.nexmo.client.verify.VerifyResponse;
-import com.nexmo.client.verify.VerifyStatus;
-import com.nexmo.client.verify.CheckResponse;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import spark.template.handlebars.HandlebarsTemplateEngine;
+
+import dao.Sql2oUserDao;
+import models.User;
+import org.sql2o.Sql2o;
 import spark.ModelAndView;
-
+import spark.template.handlebars.HandlebarsTemplateEngine;
+import static spark.Spark.*;
 public class App {
-    static String API_KEY = "2164d7d2";
-    static String API_SECRET = "fgMclsip8Hjs2vzs";
-    static String number = "";
-    static String requestId = "";
+
     public static void main(String[] args) {
-        port(3000);
+
         staticFiles.location("/public");
+        String connectionString = "jdbc:h2:~/thriftshop.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
+        Sql2o sql2o = new Sql2o(connectionString, "", "");
+        Sql2oUserDao userDao = new Sql2oUserDao(sql2o);
 
 
-        NexmoClient client = NexmoClient.builder().apiKey(API_KEY).apiSecret(API_SECRET).build();
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "register.hbs");
+            return new ModelAndView(model, "login.hbs");
         }, new HandlebarsTemplateEngine());
-        post("/register", (request, response) -> {
-            number = request.queryParams("number");
-
-            VerifyResponse verifyResponse = client.getVerifyClient().verify(number, "NEXMO");
-            if (verifyResponse.getStatus() == VerifyStatus.OK) {
-                requestId = verifyResponse.getRequestId();
-                System.out.printf("RequestID: %s", requestId);
-
-            } else {
-                System.out.printf("ERROR! %s: %s", verifyResponse.getStatus(), verifyResponse.getErrorText());
-            }
-
+        post("/user/new", (req, res) -> { //URL to make new animal on POST route
             Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "verify.hbs");
-        }, new HandlebarsTemplateEngine());
-        post("/check", (request, response) -> {
-            CheckResponse checkResponse = client.getVerifyClient().check(requestId, request.queryParams("code"));
-
-            Map<String, Object> model = new HashMap<>();
-
-            if (checkResponse.getStatus() == VerifyStatus.OK) {
-                model.put("status", "Registration Successful");
-                System.out.println("Verification successful");
-                model.put("number", number);
-                return new ModelAndView(model, "dashboard.hbs");
-            } else {
-                model.put("status", "Verification Failed");
-                System.out.println("Verification failed: " + checkResponse.getErrorText());
-
-            }
-            model.put("number", number);
-            return new ModelAndView(model, "result.hbs");
-
-
+            String name = req.queryParams("username");
+            String password = req.queryParams("password");
+            User newUser = new User( name, password);
+            userDao.add(newUser);
+            return new ModelAndView(model, "login.hbs");
         }, new HandlebarsTemplateEngine());
     }
 }

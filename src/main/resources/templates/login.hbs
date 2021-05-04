@@ -1,0 +1,16 @@
+{{#partial "content"}}
+
+        <div class="form-group">
+            <form action="/user/new" method="post">
+
+                <label for="username">UserName</label>
+                <input id="username" name="username" type="text"  class="form-control"  aria-describedby="emailHelp" placeholder="Enter Name">
+
+                <label for="password">UserName</label>
+                <input id="password" name="password" type="text"  class="form-control"  aria-describedby="emailHelp" placeholder="Enter Name">
+
+                <button type="submit" class="btn btn-primary">Go!</button>
+            </form>
+        </div>
+{{/partial}}
+{{> layout.hbs}}
