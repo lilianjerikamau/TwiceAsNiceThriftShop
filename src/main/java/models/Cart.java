@@ -9,13 +9,23 @@ public class Cart {
     private int product_id;
     private byte[] image;
     private String product_name;
+    private int price;
 
-    public  Cart (int user_id, int product_id, byte[]image, String product_name){
+    public  Cart (int user_id, int product_id, byte[]image, String product_name,int price){
+        this.price = price;
         this.user_id = user_id;
         this.product_id = product_id;
         this.image =image;
         this.product_name = product_name;
 
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getId() {

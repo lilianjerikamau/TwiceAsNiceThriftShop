@@ -1,45 +1,75 @@
 {{#block "header"}}
+
     <!doctype html>
     <html lang="en">
-
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+                crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel='stylesheet' href='/css/styles.css'>
+        {{#block "styles"}}{{/block}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+        <title>{{#block "title"}}Thrift Store{{/block}}</title>
 
-        <title>Nexmo Two-Factor Authentication Demo</title>
-        <meta name="description" content="Nexmo 2FA Demo">
-        <meta name="author" content="Mark Lewin  @devtechwriter">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
-        <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css"
-              integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE" crossorigin="anonymous">
-        <link rel="stylesheet" href="styles.css">
     </head>
-
-    <body>
-    <header class="flex-row">
-        <h1>Two-Factor Auth</h1>
-        <img class="logo" src="https://github.com/nexmo-community/nexmo-2fa-demo/blob/master/views/nexmo-white.png?raw=true"
-             alt="Nexmo logo">
-    </header>
-
-    <section id="main" role="main">
 {{/block}}
-    <p class="intro">{{#block "message"}}{{/block}}</p>
-    <p class="number">{{#block "number"}}{{/block}}</p>
+<body>
+
+<nav id="topNav" class="navbar navbar-expand-lg fixed-top navbar-toggleable-sm navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        ☰
+    </button>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us</a>
+            </li>
+        </ul>
+    </div>
+    <a class="navbar-brand mx-auto" href="#">TWICE AS NICE</a>
+    <div id="navRight" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard"><i class="fas fa-shopping-bag"></i></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="">Log in</a>
+                    <a class="dropdown-item" href="">Sign Up</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--<div class="container">-->
+
 {{#block "content"}}
+
 {{/block}}
+
 {{#block "footer"}}
-    </section>
 
-    <p class="response"></p>
-
-    <footer class="flex-row">
-        Fork me on <a href="https://github.com/nexmo-community/two-factor-auth"><i
-            class="fa fa-github fa-lg"></i>/nexmo-community</a>
-    </footer>
-
-    </body>
-
-    </html>
 {{/block}}
+
+<!--</div>-->
+</body>
+</html>
