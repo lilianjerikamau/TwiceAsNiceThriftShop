@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 SET MODE PostgreSQL;
 
 CREATE TABLE IF NOT EXISTS products (
-                                     id int PRIMARY KEY auto_increment,
+                                    id int PRIMARY KEY auto_increment,
                                     user_id int,
                                     image bytea,
                                     product_name VARCHAR ,

@@ -47,13 +47,17 @@ public class App {
             if (checkResponse.getStatus() == VerifyStatus.OK) {
                 model.put("status", "Registration Successful");
                 System.out.println("Verification successful");
+                model.put("number", number);
+                return new ModelAndView(model, "dashboard.hbs");
             } else {
                 model.put("status", "Verification Failed");
                 System.out.println("Verification failed: " + checkResponse.getErrorText());
+
             }
             model.put("number", number);
-
             return new ModelAndView(model, "result.hbs");
+
+
         }, new HandlebarsTemplateEngine());
     }
 }
