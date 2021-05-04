@@ -12,11 +12,11 @@ public interface CartDao {
     void add(Cart cart);
 
     // READ
-    User findById(int id);
+    Cart findById(int id);
 
 
     // UPDATE
-    void update(int id, int user_id,Byte[] image,String product_name);
+    void update(int id, int user_id,Byte[] image,String product_name,int price,int product_id);
 
     // DELETE
     void deleteById(int id);
