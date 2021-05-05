@@ -1,3 +1,34 @@
+navbar {
+    margin: 0;
+    padding: 2em;
+}
+
+.navbar-brand{
+    text-shadow: 0.1rem 0.1rem 0.5rem #333;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: lavender;
+}
+
+.navbar-brand:hover{
+    color: gold;
+}
+
+#navRight{
+    margin-left: 7em;
+}
+
+.navbar-nav a{
+    font-size: 1.4rem;
+    color: white;
+    margin-right: 60px;
+}
+
+.dropdown-menu{
+    background-color: #b54a36;
+}
+
 #landingPage{
     background-image: url("../images/f1.jpg");
     background-repeat: no-repeat;
