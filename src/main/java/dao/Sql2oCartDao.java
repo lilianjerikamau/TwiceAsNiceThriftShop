@@ -17,7 +17,7 @@ public class Sql2oCartDao  implements CartDao{
 
     @Override
     public void add(Cart cart) {
-        String sql = "INSERT INTO carts (cart_name, user_id, image, price) VALUES (:cart_name, :user_id, :image, :price)"; //raw sql
+        String sql = "INSERT INTO carts (product_name, user_id, image, price, product_id, quantity) VALUES (:product_name, :user_id, :image, :price, :product_id, :quantity)";
         try(Connection con = sql2o.open()){ //try to open a connection
             int id = (int) con.createQuery(sql, true) //make a new variable
                     .bind(cart)
@@ -32,7 +32,7 @@ public class Sql2oCartDao  implements CartDao{
     @Override
     public List<Cart> getAll() {
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM users") //raw sql
+            return con.createQuery("SELECT * FROM carts") //raw sql
                     .executeAndFetch(Cart.class); //fetch a list
         }
     }
@@ -47,8 +47,8 @@ public class Sql2oCartDao  implements CartDao{
     }
 
     @Override
-    public void update(int id, int user_id, Byte[] image, String product_name, int price, int product_id) {
-        String sql =  "UPDATE carts SET user_id = :user_id, product_name = :product_name, product_id = :product_id ,image = :image, price = :price WHERE id=:id";
+    public void update(int id, int user_id, String image, String product_name, int price, int product_id) {
+        String sql =  "UPDATE carts SET user_id = :user_id, product_name = :product_name, product_id = :product_id ,image = :image, price = :price ,quantity = :quantity WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("user_id", user_id)
@@ -78,7 +78,7 @@ public class Sql2oCartDao  implements CartDao{
     }
 
     @Override
-    public void clearAllUsers() {
+    public void clearAllCarts() {
         String sql = "DELETE from carts";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)

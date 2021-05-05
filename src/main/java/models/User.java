@@ -7,7 +7,7 @@ public class User {
     private String username;
     private int id;
   private  String password;
-  private String product_id;
+  private int product_id;
 
     public User(String username,String password ){
         this.username = username;
@@ -20,11 +20,11 @@ public class User {
         this.password = password;
     }
 
-    public String getProduct_id() {
+    public int getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(String product_id) {
+    public void setProduct_id(int product_id) {
         this.product_id = product_id;
     }
 

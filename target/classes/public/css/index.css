@@ -1,0 +1,137 @@
+#landingPage{
+    background-image: url("../images/f1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+    height: 100vh;
+}
+
+#heading{
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    text-align: center;
+}
+
+h1{
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 3rem;
+    color: white;
+    letter-spacing: 0.2em;
+    line-height: 1.5em;
+}
+
+h2{
+    font-style: italic;
+    font-family: cursive;
+    color: antiquewhite;
+    text-shadow: 0.1rem 0.1rem 0.5rem #333;
+}
+
+.button {
+    border-radius: 4px;
+    background-color: #b54a36;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0.5em;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 1em;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+#about{
+    background-image: url("../images/f2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+    height: 100vh;
+    text-align: center;
+}
+
+#content{
+    position: absolute;
+    top: 20%;
+    color: antiquewhite;
+    line-height: 3em;
+    font-size: 1.5rem;
+}
+
+/*contact*/
+#contact {
+    background-image: url(../images/f3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: block;
+    text-align: center;
+    height: 100vh;
+}
+
+#form {
+    padding: 15em;
+}
+
+#contactForm ::placeholder {
+    color: white;
+}
+
+.form-control {
+    background: transparent;
+    border-width: 0.5px;
+    text-align: left;
+    color: white;
+}
+
+#textArea {
+    margin-top: 30px;
+}
+
+#submitBtn {
+    padding: 0.5em 2em;
+    margin-top: 2em;
+    border: none;
+    background: rgb(76, 126, 173);
+}
+
+#submitBtn:hover {
+    background: rgb(202, 144, 35);
+}
+
+@media only screen and (max-device-width: 1024px) {
+    #landingPage, #about, #contact {
+        background-attachment: scroll;
+    }
+}

@@ -20,6 +20,6 @@ public interface ProductDao {
 
     // DELETE
     void deleteById(int id);
-    void clearAllUsers();
+    void clearAllProducts();
 
 }
