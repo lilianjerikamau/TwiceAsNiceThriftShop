@@ -1,26 +1,156 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 vertical-center">
-            <div class="thumbnail">
-                <img src="{{product.img}}" alt="{{product.name}}">
-                <div class="caption">
-                    <h2>{{product.name}}</h2>
-                    <p class="price">${{product.price}}</p>
-                    <p>{{product.desc}}</p>
-                    <form method="POST" action="../cart/{{id}}">
-                        <label for="quantity">Select quantity</label>
-                        <select class="form-control product-dropdown" id="quantity" name="quantity">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                        <button class="btn btn-default noPad" type="submit" value="Submit">Add To Cart</button>
-                    </form>
-                    <a href="/products" class="back-to-products btn btn-default" role="button">Back to all products</a>
+{{#partial "script"}}
+
+    <script src="/js/script.js"></script>
+
+{{/partial}}
+
+{{#partial "styles"}}
+
+    <link rel='stylesheet' href='/css/product.css'>
+
+{{/partial}}
+
+{{#partial "content"}}
+
+    <input type="checkbox" id="cartToggle" name="toggle" />
+
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-toggleable-sm navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+            ☰
+        </button>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sell">Sell Item</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav ml-auto">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Men
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="">Coats</a>
+                        <a class="dropdown-item" href="">Bottoms</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Women
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="">Tops</a>
+                        <a class="dropdown-item" href="">Bottoms</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Children
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="">Tops</a>
+                        <a class="dropdown-item" href="">Bottoms</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <label for="cartToggle" class="toggleCart btnStyle btnStyle2"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        <i class="fa fa-circle" aria-hidden="true"></i>
+                        <span class="num"></span>
+                    </label>
+                </li>
+
+            </ul>
+        </div>
+    </nav><!-- End of Navigation -->
+
+    <div class="body-content">
+        <!-- Cart -->
+        <nav class="cart">
+            <h3>List of items: Ksh<span>0</span></h3>
+            <ol id="listOfOrders">
+            </ol>
+            <a class="btnStyle btnStyle3 checkout">Checkout</a>
+        </nav>
+
+        <div class="item-menu">
+            <!-- Product -->
+            <div class="item">
+                <p class="name">{{name}}</p>
+                <img src="../images/f4.jpg">
+                <a class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
+                <p class="price">Ksh<span> 500</span></p>
+                <div id="checkOrder" title={{name}}>
+                    <h3 class="listHeading">Size:</h3>
+                    <ul class="listOfSizes" id="size1">
+                        <li><input type="checkbox" checked>Small- S</li>
+                        <li><input type="checkbox">Medium- M</li>
+                        <li><input type="checkbox">Large - L</li>
+                        <li><input type="checkbox">Extra Large - XL</li>
+                        <li><input type="checkbox">Extra Extra Large - XXL</li>
+                    </ul>
+                    <a class="btnStyle btnStyle3 listOver">Add Size</a>
+                    <h4 class="totalDialog" id="totalDialog1">Total: Ksh<span> 15</span></h4>
                 </div>
             </div>
+            <!-- End of Product -->
         </div>
     </div>
-</div>
+
+    <div id="finishOrderDialog" title="Confirm Order">
+        <div id="finalOrderList">
+            <h3>Your Orders:</h3>
+            <ol></ol>
+        </div>
+        <div id="buyerInfo">
+            <input type="text" id="buyerName" placeholder="Enter Name">
+            <input type="text" id="buyerNumber" placeholder="Enter Phone Number">
+            <input type="text" id="buyerAddress" placeholder="Enter Address">
+            <a class="btnStyle order">Order!</a>
+        </div>
+    </div>
+
+    <div id="thanksMessage">
+        <h1>Thank you for the order</h1>
+        <h3>We will have it delivered soon</h3>
+    </div>
+
+{{/partial}}
+
+{{> layout.hbs}}
+
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-6 col-md-offset-3 vertical-center">-->
+<!--            <div class="thumbnail">-->
+<!--                <img src="{{product.img}}" alt="{{product.name}}">-->
+<!--                <div class="caption">-->
+<!--                    <h2>{{product.name}}</h2>-->
+<!--                    <p class="price">${{product.price}}</p>-->
+<!--                    <p>{{product.desc}}</p>-->
+<!--                    <form method="POST" action="../cart/{{id}}">-->
+<!--                        <label for="quantity">Select quantity</label>-->
+<!--                        <select class="form-control product-dropdown" id="quantity" name="quantity">-->
+<!--                            <option>1</option>-->
+<!--                            <option>2</option>-->
+<!--                            <option>3</option>-->
+<!--                            <option>4</option>-->
+<!--                            <option>5</option>-->
+<!--                        </select>-->
+<!--                        <button class="btn btn-default noPad" type="submit" value="Submit">Add To Cart</button>-->
+<!--                    </form>-->
+<!--                    <a href="/products" class="back-to-products btn btn-default" role="button">Back to all products</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
