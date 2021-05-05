@@ -13,6 +13,10 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/products", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "product.hbs");
+        }, new HandlebarsTemplateEngine());
 
     }
 }
