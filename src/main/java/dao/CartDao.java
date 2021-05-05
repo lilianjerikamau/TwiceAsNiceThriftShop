@@ -1,25 +1,26 @@
 package dao;
 import models.Cart;
+import models.Product;
 import models.User;
 
 import java.util.List;
 
 public interface CartDao {
     // LIST
-    List<Cart> getAll();
+    List<Product> getAll();
 
     // CREATE
+    void add(Product product);
     void add(Cart cart);
 
     // READ
     Cart findById(int id);
-
+    List<Product> getProductsByCartId(int product_id);
 
     // UPDATE
-    void update(int id, int user_id,String image,String product_name,double price,int product_id);
 
     // DELETE
-    void deleteById(int id);
-    void clearAllCarts();
+    void deleteByProductId(int product_id);
+
 
 }

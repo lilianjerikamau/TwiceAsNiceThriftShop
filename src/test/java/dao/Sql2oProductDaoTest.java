@@ -67,17 +67,17 @@ class Sql2oProductDaoTest {
 
 
     @Test
-    public void userIdIsReturnedCorrectly() throws Exception {
+    public void productIdIsReturnedCorrectly() throws Exception {
         Product Product = setupNewProduct();
-        int originalProductId = Product.getUser_id();
+        int originalProductId = Product.getId();
         productDao.add(Product);
-        assertEquals(originalProductId, productDao.findById(Product.getId()).getUser_id());
+        assertEquals(originalProductId, productDao.findById(Product.getId()).getId());
     }
 
     //define the following once and then call it as above in your tests.
 
     public Product setupNewProduct(){
-        return new Product(1,20,"image","shirt");
+        return new Product(500,"shirt");
     }
 
 

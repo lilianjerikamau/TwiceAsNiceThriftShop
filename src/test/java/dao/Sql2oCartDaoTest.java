@@ -2,6 +2,8 @@ package dao;
 
 import models.Cart;
 import models.Cart;
+import models.Product;
+import models.User;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Sql2oCartDaoTest {
     private static Sql2oCartDao cartDao; //these variables are now static.
+    private static Sql2oProductDao productDao;
     private static Connection conn; //these variables are now static.
 
     @BeforeAll //changed to @BeforeClass (run once before running any tests in this file)
@@ -20,6 +23,7 @@ class Sql2oCartDaoTest {
         String connectionString = "jdbc:postgresql://localhost:5432/thriftshop_test"; // connect to postgres test database
         Sql2o sql2o = new Sql2o(connectionString, "sherry", "password"); // changed user and pass to null
         cartDao = new Sql2oCartDao(sql2o);
+        productDao = new Sql2oProductDao(sql2o);
         conn = sql2o.open(); // open connection once before this test file is run
     }
 
@@ -36,30 +40,44 @@ class Sql2oCartDaoTest {
     }
     @Test
     public void addingCartSetsId() throws Exception {
-        Cart Cart = setupNewCart();
-        int originalCartId = Cart.getId();
-        cartDao.add(Cart);
-        assertNotEquals(originalCartId, Cart.getId()); //how does this work?
+        Cart category = setupNewCart();
+        int originalCartId = category.getId();
+        cartDao.add(category);
+        assertNotEquals(originalCartId, category.getId());
+    }
+    @Test
+    public void existingCartsCanBeFoundById() throws Exception {
+        Cart cart = setupNewCart();
+        cartDao.add(cart);
+        Cart foundCart = cartDao.findById(cart.getId());
+        assertEquals(cart, foundCart);
+    }
+    @Test
+    public void existingCartsCanDeletedById() throws Exception {
+        Cart cart = setupNewCart();
+        cartDao.add(cart);
+        Cart foundCart = cartDao.findById(cart.getId());
+        assertEquals(cart, foundCart);
     }
 
-    @Test
-    public void existingCartCanBeFoundById() throws Exception {
-        Cart Cart = setupNewCart();
-        cartDao.add(Cart); //add to dao (takes care of saving)
-        Cart foundTask = cartDao.findById(Cart.getId()); //retrieve
-        assertEquals(Cart, foundTask); //should be the same
-    }
-    @Test
-    public void addedCartsAreReturnedFromgetAll() throws Exception {
-        Cart Cart = setupNewCart();
-        cartDao.add(Cart);
-        assertEquals(1, cartDao.getAll().size());
+@Test
+    public void getAllProductsByCartReturnsProductsCorrectly() throws Exception {
+        Cart category = setupNewCart();
+        cartDao.add(category);
+        int product_id = category.getProduct_id();
+//        User newUser = category.getUser_id();
+        Product newProduct= new Product(500 ,"shirt");
+        Product otherProduct = new Product( 50,"short");
+        Product thirdProduct = new Product( 43,"skirt");
+        productDao.add(newProduct);
+        productDao.add(otherProduct); //we are not adding task 3 so we can test things precisely.
+        assertEquals(2, cartDao.getProductsByCartId(product_id).size());
+        assertTrue(cartDao.getProductsByCartId(product_id).contains(newProduct));
+        assertTrue(cartDao.getProductsByCartId(product_id).contains(otherProduct));
+        assertFalse(cartDao.getProductsByCartId(product_id).contains(thirdProduct)); //things are accurate!
     }
 
-    @Test
-    public void noCartsReturnsEmptyList() throws Exception {
-        assertEquals(0, cartDao.getAll().size());
-    }
+
 
 
 
@@ -78,7 +96,10 @@ class Sql2oCartDaoTest {
     //define the following once and then call it as above in your tests.
 
     public Cart setupNewCart(){
-        return new Cart(2,3,"image","shirt",600,5);
+        return new Cart(5,10);
+    }
+    public User setupNewUser(){
+        return new User("Kamau","sherry");
     }
 
 }
