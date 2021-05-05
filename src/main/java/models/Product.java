@@ -7,7 +7,7 @@ public class Product {
     private String image;
     private int user_id;
     private String product_name;
-    private int price;
+    private double price;
 
     public Product(int user_id,int price,String image,String product_name){
         this.image = image;
@@ -48,7 +48,7 @@ public class Product {
         this.product_name = product_name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

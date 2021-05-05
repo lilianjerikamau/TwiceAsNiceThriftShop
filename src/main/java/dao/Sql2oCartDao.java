@@ -47,7 +47,7 @@ public class Sql2oCartDao  implements CartDao{
     }
 
     @Override
-    public void update(int id, int user_id, String image, String product_name, int price, int product_id) {
+    public void update(int id, int user_id, String image, String product_name, double price, int product_id) {
         String sql =  "UPDATE carts SET user_id = :user_id, product_name = :product_name, product_id = :product_id ,image = :image, price = :price ,quantity = :quantity WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -86,5 +86,6 @@ public class Sql2oCartDao  implements CartDao{
         } catch (Sql2oException ex){
             System.out.println(ex);
         }
+
     }
 }

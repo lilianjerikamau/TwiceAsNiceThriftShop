@@ -9,7 +9,7 @@ public class Cart {
     private int product_id;
     private String image;
     private String product_name;
-    private int price;
+    private double price;
     private int quantity;
 
     public  Cart (int user_id, int product_id, String image, String product_name, int price,int quantity){
@@ -21,7 +21,7 @@ public class Cart {
 
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

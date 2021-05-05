@@ -16,7 +16,7 @@ public interface CartDao {
 
 
     // UPDATE
-    void update(int id, int user_id,String image,String product_name,int price,int product_id);
+    void update(int id, int user_id,String image,String product_name,double price,int product_id);
 
     // DELETE
     void deleteById(int id);
