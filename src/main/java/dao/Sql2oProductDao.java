@@ -46,7 +46,7 @@ public class Sql2oProductDao  implements ProductDao{
     }
 
     @Override
-    public void update(int id, String product_name, Byte[] image, int price, int user_id,int product_id) {
+    public void update(int id, String product_name, Byte[] image, double price, int user_id,int product_id) {
             String sql =  "UPDATE carts SET user_id = :user_id, product_name = :product_name, product_id = :product_id,image = :image, price = :price WHERE id=:id";
             try(Connection con = sql2o.open()){
                 con.createQuery(sql)

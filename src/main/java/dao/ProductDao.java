@@ -16,7 +16,7 @@ public interface ProductDao {
 
 
     // UPDATE
-    void update(int id, String product_name,Byte[] image,int price,int user_id,int product_id);
+    void update(int id, String product_name,Byte[] image,double price,int user_id,int product_id);
 
     // DELETE
     void deleteById(int id);
