@@ -7,11 +7,12 @@ public class Cart {
     private int id;
     private int user_id;
     private int product_id;
-    private byte[] image;
+    private String image;
     private String product_name;
     private int price;
+    private int quantity;
 
-    public  Cart (int user_id, int product_id, byte[]image, String product_name,int price){
+    public  Cart (int user_id, int product_id, String image, String product_name, int price,int quantity){
         this.price = price;
         this.user_id = user_id;
         this.product_id = product_id;
@@ -52,11 +53,11 @@ public class Cart {
         this.product_id = product_id;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -68,18 +69,24 @@ public class Cart {
         this.product_name = product_name;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Cart)) return false;
         Cart cart = (Cart) o;
-        return getId() == cart.getId() && getUser_id() == cart.getUser_id() && getProduct_id() == cart.getProduct_id() && Arrays.equals(getImage(), cart.getImage()) && Objects.equals(getProduct_name(), cart.getProduct_name());
+        return getId() == cart.getId() && getUser_id() == cart.getUser_id() && getProduct_id() == cart.getProduct_id() && getPrice() == cart.getPrice() && getQuantity() == cart.getQuantity() && Objects.equals(getImage(), cart.getImage()) && Objects.equals(getProduct_name(), cart.getProduct_name());
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getId(), getUser_id(), getProduct_id(), getProduct_name());
-        result = 31 * result + Arrays.hashCode(getImage());
-        return result;
+        return Objects.hash(getId(), getUser_id(), getProduct_id(), getImage(), getProduct_name(), getPrice(), getQuantity());
     }
 }

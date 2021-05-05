@@ -1,0 +1,63 @@
+{{#partial "styles"}}
+
+    <link rel='stylesheet' href='/css/index.css'>
+
+{{/partial}}
+
+{{#partial "content"}}
+
+<div id="landingPage">
+
+    <div id="heading">
+        <h1>Buy What You Need <br> Sell What You Don't</h1>
+        <h2>All From The Comfort Of Your Home</h2>
+        <button class="button" href="/dashboard"><span>Get Started </span></button>
+    </div>
+
+</div>
+
+<div id="about">
+
+    <div class="row">
+
+        <div class="col-md-6" id="content">
+
+        <h2>ABOUT US</h2>
+
+        <p>Have you ever found yourself with clothes that you don't wear because they either don’t fit anymore or you bought them in oversize or undersize or you just don't like them despite them being in perfect condition?</p>
+
+        <p>If that perfectly describes you, then you have come to the right place!</p>
+
+        <p>Twice as Nice is a platform where people can buy and sell second hand clothes with ease.</p>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div id="contact">
+
+        <form id="form">
+            <h3>CONTACT US</h3>
+            <div class="form-row" id="contactForm">
+                <div class="col">
+                    <input type="name" class="form-control" id="name" placeholder="Name..." required>
+                </div>
+                <div class="col">
+                    <input type="email" class="form-control" id="email" placeholder="Email..." required>
+                </div>
+                <textarea class="form-control" id="textArea" rows="10" cols="100"
+                          placeholder="Your message here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+        </form>
+
+
+</div>
+
+</div>
+
+{{/partial}}
+
+{{> layout.hbs}}

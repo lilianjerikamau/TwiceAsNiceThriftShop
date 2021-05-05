@@ -1,7 +1,6 @@
 package dao;
 
 import models.Product;
-import models.Product;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -32,7 +31,7 @@ public class Sql2oProductDao  implements ProductDao{
     @Override
     public List<Product> getAll() {
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM users") //raw sql
+            return con.createQuery("SELECT * FROM products") //raw sql
                     .executeAndFetch(Product.class); //fetch a list
         }
     }
@@ -77,7 +76,7 @@ public class Sql2oProductDao  implements ProductDao{
     }
 
     @Override
-    public void clearAllUsers() {
+    public void clearAllProducts() {
         String sql = "DELETE from products";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
