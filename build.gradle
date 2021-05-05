@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'application'
 }
-
+apply plugin :'maven'
 group 'org.thrift'
 version '1.0-SNAPSHOT'
 
