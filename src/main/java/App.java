@@ -59,5 +59,9 @@ public class App {
             return new ModelAndView(model, "product.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/sell", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "sellForm.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
