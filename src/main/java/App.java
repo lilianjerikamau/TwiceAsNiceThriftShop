@@ -63,5 +63,10 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "sellForm.hbs");
         }, new HandlebarsTemplateEngine());
+
+        get("/login", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "login.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
