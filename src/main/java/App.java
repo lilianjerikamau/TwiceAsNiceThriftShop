@@ -72,13 +72,13 @@ public class App {
 
         // process form for signup
         post("/users", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
+            Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
             String password = request.queryParams("password");
             User newUser = new User(name, password);
             newUser.save();
             model.put("fontColor", "green");
-            model.put("msg", "Seller Added Successfuly!!");
+            model.put("msg", "User Added Successfuly!!");
             model.put("link", "/login");
             model.put("linkto", "Back to Login");
             return new ModelAndView(model, "success.hbs");
