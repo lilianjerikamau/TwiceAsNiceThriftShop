@@ -20,7 +20,8 @@ navbar {
 }
 
 .navbar-nav a{
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    font-weight: 600;
     color: white;
     margin-right: 60px;
 }
@@ -30,12 +31,9 @@ navbar {
 }
 
 #landingPage{
-    background-image: url("../images/f5.jpg");
-    background-color: grey;
+    background-image: url("../images/f6.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-
-    background-position: center;
     position: relative;
     height: 100vh;
 }
@@ -51,7 +49,6 @@ h1{
     text-transform: uppercase;
     font-weight: 600;
     font-size: 3rem;
-    color: white;
     letter-spacing: 0.2em;
     line-height: 1.5em;
 }
@@ -61,6 +58,11 @@ h2{
     font-family: cursive;
     color: antiquewhite;
     text-shadow: 0.1rem 0.1rem 0.5rem #333;
+}
+
+#heading a{
+    text-decoration: none;
+    color: white;
 }
 
 .button {
@@ -101,13 +103,12 @@ h2{
     opacity: 1;
     right: 0;
 }
+
 #about{
-    /*background-image: url("../images/f3.jpg");*/
-    background-color: grey;
+    background-image: url("../images/f17.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    background-position: center;
     position: relative;
     height: 100vh;
     text-align: center;
@@ -121,32 +122,39 @@ h2{
     font-size: 1.5rem;
 }
 
+#content p {
+    color: white;
+    margin: 2em;
+    font-size: 1.5rem;
+    line-height: 3;
+}
+
 /*contact*/
 #contact {
-    background-image: url(../images/f3.jpg);
-    background-color: grey;
+    background-color: #ffffff;
     background-repeat: no-repeat;
     background-size: cover;
-
     background-position: center;
     display: block;
-    text-align: center;
-    height: 100vh;
 }
 
 #form {
     padding: 15em;
 }
 
-#contactForm ::placeholder {
-    color: white;
+#form h3{
+    text-align: center;
+    margin-bottom: 1em;
 }
 
-.form-control {
-    background: transparent;
-    border-width: 0.5px;
-    text-align: left;
-    color: white;
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 #textArea {
@@ -154,32 +162,17 @@ h2{
 }
 
 #submitBtn {
-    padding: 0.5em 2em;
-    margin-top: 2em;
+    width: 100%;
+    background-color: #b54a36;
+    color: white;
+    padding: 18px 20px;
+    margin: 8px 0;
     border: none;
-    background: rgb(76, 126, 173);
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 #submitBtn:hover {
     background: rgb(202, 144, 35);
 }
 
-@media only screen and (max-device-width: 1024px) {
-    #landingPage, #about, #contact {
-        background-attachment: scroll;
-    }
-}
-
-p {
-    color: black;
-}
-
-.col-md-6 {
-    padding: 10px;
-    border: #C98474;
-    mso-border-shadow: yes;
-}
-
-#heading {
-    margin-left: 700px;
-}

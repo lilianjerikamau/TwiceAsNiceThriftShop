@@ -147,6 +147,13 @@ input{
 }
 
 /* orders */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
 
 .item-menu{
     margin-top: 100px;
@@ -157,6 +164,8 @@ input{
 
 .item{
     width: 300px;
+    height: auto;
+    margin: 2em;
     position: relative;
 }
 
@@ -174,12 +183,17 @@ input{
 .name{
     font-size: 23px;
     text-align: center;
+    margin: 0.1em;
 }
 
 .price {
-    font-weight: bold;
+    color: grey;
     font-size: 22px;
-    padding: 0px 15px;
+    padding: 0.1em;
+}
+
+p{
+    padding: 1em;
 }
 
 .item:hover > .addToCart{
@@ -194,12 +208,9 @@ input{
     transition: all .2s ease-in-out;
 }
 
-#checkOrder{
-    padding: 50px;
-}
-
 #checkOrder {
-    padding: 29px 50px !important;
+    padding: 9px 5px !important;
+    line-height: 2em;
 }
 
 .listHeading {
@@ -277,6 +288,55 @@ hr {
     text-align: center;
 }
 
+/* The grid: Four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+
+/* Style the images inside the grid */
+.column img {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.column img:hover {
+    opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The expanding image container (positioning is needed to position the close button and the text) */
+.container {
+    position: relative;
+    display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+}
+
+/* Closable button inside the image */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
 #finishOrderDialog{
     padding: 30px;
     display: flex;
@@ -296,28 +356,35 @@ hr {
 }
 
 #buyerInfo {
-    width: 60%;
+    width: 100%;
     margin: 0 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: end;
+}
+
+#buyerInfo label{
+    margin-bottom: 10px;
+    padding: 5px;
+    display: block;
 }
 
 #buyerInfo input {
-    margin: 5px 0;
-    padding: 3px;
-    width: 90%;
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    width: 100%;
 }
 
 #buyerInfo .order{
     display: block;
-    width: 50%;
-    margin-top: 10px;
-    text-align:center;
+    width: 100%;
+    border-style: none;
+    background-color: gray;
 }
 
-#buyerInfo input::-webkit-input-placeholder {
-    text-align: center;
+#buyerInfo .fa, .fas{
+    margin-right: 0.5em;
 }
 
 #thanksMessage{
@@ -345,7 +412,7 @@ hr {
 }
 
 .ui-button {
-    background-color: #874C62;
+    background-color: #707479;
     border: none;
     border-radius: 3px;
     padding: 3px 5px;

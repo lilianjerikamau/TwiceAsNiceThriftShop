@@ -84,11 +84,77 @@
 
         <div class="item-menu">
             <!-- Product -->
-            <div class="item">
-                <p class="name">{{name}}</p>
-                <img src="../images/f4.jpg">
-                <a class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
+            <div class="card item">
+                <img src="../images/f4.jpg" style="width:100%">
+                <p class="name">{{name}}Coat</p>
                 <p class="price">Ksh<span> 500</span></p>
+                <p>Some text about the coat.</p>
+                <a class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
+
+                <div id="checkOrder" title={{name}}>
+                    <h3 class="listHeading">Size:</h3>
+                    <ul class="listOfSizes" id="size1">
+                        <li><input type="checkbox" checked>Small- S</li>
+                        <li><input type="checkbox">Medium- M</li>
+                        <li><input type="checkbox">Large - L</li>
+                        <li><input type="checkbox">Extra Large - XL</li>
+                        <li><input type="checkbox">Extra Extra Large - XXL</li>
+                    </ul>
+                    <a class="btnStyle btnStyle3 listOver">Add Size</a>
+                    <h4 class="totalDialog" id="totalDialog1">Total: Ksh<span> 15</span></h4>
+                </div>
+            </div>
+
+            <div class="card item">
+                <img src="../images/f25.jpg" style="width:100%">
+                <p class="name">{{name}}Coat</p>
+                <p class="price">Ksh<span> 500</span></p>
+                <p>Some text about the coat.</p>
+                <a class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
+
+                <div id="checkOrder" title={{name}}>
+                    <h3 class="listHeading">Size:</h3>
+                    <ul class="listOfSizes" id="size1">
+                        <li><input type="checkbox" checked>Small- S</li>
+                        <li><input type="checkbox">Medium- M</li>
+                        <li><input type="checkbox">Large - L</li>
+                        <li><input type="checkbox">Extra Large - XL</li>
+                        <li><input type="checkbox">Extra Extra Large - XXL</li>
+                    </ul>
+                    <a class="btnStyle btnStyle3 listOver">Add Size</a>
+                    <h4 class="totalDialog" id="totalDialog1">Total: Ksh<span> 15</span></h4>
+                </div>
+            </div>
+
+
+            <div class="card item">
+                <img src="../images/f18.jpg" style="width:100%">
+                <p class="name">{{name}}Coat</p>
+                <p class="price">Ksh<span> 500</span></p>
+                <p>Some text about the coat.</p>
+                <a class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
+
+                <div id="checkOrder" title={{name}}Coat>
+                    <h3 class="listHeading">Size:</h3>
+                    <ul class="listOfSizes" id="size1">
+                        <li><input type="checkbox" checked>Small- S</li>
+                        <li><input type="checkbox">Medium- M</li>
+                        <li><input type="checkbox">Large - L</li>
+                        <li><input type="checkbox">Extra Large - XL</li>
+                        <li><input type="checkbox">Extra Extra Large - XXL</li>
+                    </ul>
+                    <a class="btnStyle btnStyle3 listOver">Add Size</a>
+                    <h4 class="totalDialog" id="totalDialog1">Total: Ksh<span> 15</span></h4>
+                </div>
+            </div>
+
+            <div class="card item">
+                <img src="../images/f20.jpg" style="width:100%">
+                <p class="name">{{name}}Coat</p>
+                <p class="price">Ksh<span> 500</span></p>
+                <p>Some text about the coat.</p>
+                <a class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
+
                 <div id="checkOrder" title={{name}}>
                     <h3 class="listHeading">Size:</h3>
                     <ul class="listOfSizes" id="size1">
@@ -106,16 +172,34 @@
         </div>
     </div>
 
-    <div id="finishOrderDialog" title="Confirm Order">
-        <div id="finalOrderList">
-            <h3>Your Orders:</h3>
-            <ol></ol>
-        </div>
-        <div id="buyerInfo">
-            <input type="text" id="buyerName" placeholder="Enter Name">
-            <input type="text" id="buyerNumber" placeholder="Enter Phone Number">
-            <input type="text" id="buyerAddress" placeholder="Enter Address">
-            <a class="btnStyle order">Order!</a>
+    <div id="finishOrderDialog" title="Billing Address">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="finalOrderList">
+                    <h3>Your Orders:</h3>
+                    <ol></ol>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div id="buyerInfo">
+                    <label for="buyerName"><i class="fa fa-user"></i> Full Name</label>
+                    <input type="text" id="buyerName" name="buyerName" placeholder="John M. Doe" required>
+
+                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                    <input type="text" id="buyerEmail" name="buyerEmail" placeholder="john@example.com" required>
+
+                    <label for="email"><i class="fas fa-phone"></i>Phone Number</label>
+                    <input type="text" id="buyerNumber" name="buyerNumber" placeholder="0700000000">
+
+                    <label for="buyerAddress"><i class="fas fa-address-card"></i>Address</label>
+                    <input type="text" id="buyerAddress" name="buyerAddress" placeholder="542 W. 15th Street">
+
+                    <label for="city"><i class="fas fa-university"></i>City</label>
+                    <input type="text" id="city" name="city" placeholder="Nakuru">
+
+                    <button type="submit" class="btn-secondary btnStyle order">Order</button>
+                </div>
+            </div>
         </div>
     </div>
 

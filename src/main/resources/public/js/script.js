@@ -104,10 +104,12 @@ $(document).ready(function() {
 
     $(".order").on("click", function () {
         var name = $("#buyerName").val();
+        var email = $("#buyerEmail").val();
         var number = $("#buyerNumber").val();
         var address = $("#buyerAddress").val();
+        var city = $("#city").val();
 
-        if (name != "" && number != "" && address != "") {
+        if (name != "" && email != "" && number != null && address != "" && city != "") {
             $("#finishOrderDialog").dialog("close");
             $("#buyerInfo").children("p").remove();
             $("#thanksMessage").dialog({
@@ -117,9 +119,9 @@ $(document).ready(function() {
             });
             setTimeout(function(){
                 $("#thanksMessage").dialog("close");
-            }, 5000);
+            }, 3000);
         }else{
-            $("#buyerInfo").append('<p>Fill up all the inputs</p>');
+            $("#buyerInfo").append('<h6>Fill in all the details</h6>');
         }
     })
 
