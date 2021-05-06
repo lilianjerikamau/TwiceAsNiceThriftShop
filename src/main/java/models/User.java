@@ -1,4 +1,5 @@
 package models;
+import org.sql2o.*;
 
 import java.util.Objects;
 
@@ -61,7 +62,6 @@ public class User {
     public String getPassword() {
         return password;
     }
-
 
 
 
