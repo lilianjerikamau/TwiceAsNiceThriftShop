@@ -63,7 +63,7 @@ public class User {
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO users(username, password) VALUES (:name, :password);";
+            String sql = "INSERT INTO users(username, password) VALUES (:name, :password)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("username", this.username)
                     .addParameter("password", this.password)

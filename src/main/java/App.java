@@ -74,9 +74,9 @@ public class App {
         // process form for signup
         post("/users", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            String name = request.queryParams("name");
+            String username = request.queryParams("name");
             String password = request.queryParams("password");
-            User newUser = new User(name, password);
+            User newUser = new User(username, password);
             newUser.save();
             model.put("fontColor", "green");
             model.put("msg", "User Added Successfuly!!");
