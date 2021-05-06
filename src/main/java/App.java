@@ -1,6 +1,8 @@
 import static spark.Spark.*;
 
 import dao.Sql2oUserDao;
+import models.Password;
+import models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sql2o.Sql2o;
@@ -63,5 +65,46 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "sellForm.hbs");
         }, new HandlebarsTemplateEngine());
+
+        get("/login", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "login.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        // process form for signup
+        post("/users", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String username = request.queryParams("name");
+            String password = request.queryParams("password");
+            User newUser = new User(username, password);
+            newUser.save();
+            model.put("fontColor", "green");
+            model.put("msg", "User Added Successfuly!!");
+            model.put("link", "/login");
+            model.put("linkto", "Back to Login");
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/login", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = request.queryParams("name").toUpperCase();
+            String password = request.queryParams("password");
+
+            int found = Password.UserVerifier(name,password);
+
+            if(found == 0){
+                //Wrong username & Password
+                model.put("fontColor", "red");
+                model.put("msg", "Wrong Password");
+                model.put("link", "/login");
+                model.put("linkto", "Back to Login Page");
+            }else{
+                User user = User.login(name, password);
+                int userid = user.getId();
+                response.redirect("/user/"+userid);
+            }
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 }
