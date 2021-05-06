@@ -30,10 +30,11 @@ navbar {
 }
 
 #landingPage{
-    background-image: url("../images/f1.jpg");
+    background-image: url("../images/f5.jpg");
+    background-color: grey;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+
     background-position: center;
     position: relative;
     height: 100vh;
@@ -101,7 +102,8 @@ h2{
     right: 0;
 }
 #about{
-    background-image: url("../images/f2.jpg");
+    /*background-image: url("../images/f3.jpg");*/
+    background-color: grey;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -122,9 +124,10 @@ h2{
 /*contact*/
 #contact {
     background-image: url(../images/f3.jpg);
+    background-color: grey;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+
     background-position: center;
     display: block;
     text-align: center;
@@ -165,4 +168,18 @@ h2{
     #landingPage, #about, #contact {
         background-attachment: scroll;
     }
+}
+
+p {
+    color: black;
+}
+
+.col-md-6 {
+    padding: 10px;
+    border: #C98474;
+    mso-border-shadow: yes;
+}
+
+#heading {
+    margin-left: 700px;
 }

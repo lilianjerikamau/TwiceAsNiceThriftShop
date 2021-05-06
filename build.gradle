@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'application'
 }
-apply plugin :'maven'
+//apply plugin :'maven'
 group 'org.thrift'
 version '1.0-SNAPSHOT'
 
@@ -41,7 +41,4 @@ dependencies {
     implementation'org.beryx:handlebars-java-helpers:0.4.1'
 //    implementation 'com.cloudinary:cloudinary-http44:[Cloudinary API version, e.g. 1.1.3]'
 
-    test {
-        useJUnitPlatform()
-    }
 }
