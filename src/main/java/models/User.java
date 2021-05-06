@@ -61,32 +61,15 @@ public class User {
         return password;
     }
 
-    public void save() {
-        try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO users(username, password) VALUES (:name, :password)";
-            this.id = (int) con.createQuery(sql, true)
-                    .addParameter("username", this.username)
-                    .addParameter("password", this.password)
-                    .executeUpdate()
-                    .getKey();
-        }
-    }
+
 
     public int getId() {
         return id;
     }
 
 //this method logs in user into their profile,it can have product items specific to them
-    public static User login(String name, String password) {
-        try(Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM users where name=:name and password=:password";
-            User user = con.createQuery(sql)
-                    .addParameter("name", name)
-                    .addParameter("password", password)
-                    .executeAndFetchFirst(User.class);
-            return user;
-        }
-    }
+
+
 
 
 

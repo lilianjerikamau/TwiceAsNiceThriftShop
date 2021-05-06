@@ -1,77 +1,12 @@
-{{#partial "content"}}
 
-        <link rel='stylesheet' href='/css/login.css'>
+<div class="form-group">
+    <form action="/login" method="post">
 
-    <div class="container">
-    <div class="jumbotron">
+        <label for="username">User Name</label>
+        <input id="username" name="username" type="text"  class="form-control"  aria-describedby="emailHelp" placeholder="Enter Name">
+        <label for="password">User Name</label>
+        <input id="password" name="password" type="text"  class="form-control"  aria-describedby="emailHelp" placeholder="Enter Name">
 
-        <div class="row">
-            <div class="col-md-9">
-
-                <button onclick="document.getElementById('id01').style.display='block'" class="btn-primary" style="width:auto;">Login</button>
-
-                <div id="id01" class="modal">
-
-                    <form class="modal-content animate" action="/login" method="post">
-
-                        <div class="container">
-                            <label><b>Username</b></label>
-                            <input type="text" placeholder="Enter Username" name="name" id="name" required>
-
-                            <label><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="password" id="password" required>
-
-                            <button type="submit">Login</button>
-                            <input type="checkbox" checked="checked"> Remember me
-                        </div>
-
-                        <div class="container" style="background-color:#f1f1f1">
-                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                        </div>
-                    </form>
-                </div>
-
-                <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SIGN UP</button>
-
-                <div id="id02" class="modal">
-                    <form class="modal-content animate" action="/users" method="post">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label><b>Username:</b></label>
-                                    <input type="text" placeholder="Enter Username" id="name" name="name" required>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label><b>Password:</b></label>
-                                    <input type="password" placeholder="Enter Password" name="password" id="password" required>
-                                </div>
-                            </div>
-
-                            <button type="submit">Create Account</button>
-                        </div>
-                        <div class="container" style="background-color:#f1f1f1">
-                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                        </div>
-                    </form>
-                </div>
-                {{#block "script"}}
-                <script>
-                // Get the modal
-                var modal = document.getElementById('id01');
-                var modal = document.getElementById('id02');
-
-                // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function(event) {
-                if (event.target == modal) {
-                modal.style.display = "none";
-                  }
-                }
-                 </script>
-                {{/block}}
-            </div>
-        </div>
-    </div>
+        <button type="submit" class="btn btn-primary">Go!</button>
+    </form>
 </div>
-
-{{/partial}}
-{{> layout.hbs}}

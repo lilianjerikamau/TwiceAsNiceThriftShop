@@ -126,15 +126,15 @@
                 </div>
             </div>
 
-
+{{#each products}}
             <div class="card item">
                 <img src="../images/f18.jpg" style="width:100%">
-                <p class="name">{{name}}Coat</p>
+                <p class="name">{{product_name}}Coat</p>
                 <p class="price">Ksh<span> 500</span></p>
                 <p>Some text about the coat.</p>
                 <a class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
 
-                <div id="checkOrder" title={{name}}Coat>
+                <div id="checkOrder" title={{product_name}}Coat>
                     <h3 class="listHeading">Size:</h3>
                     <ul class="listOfSizes" id="size1">
                         <li><input type="checkbox" checked>Small- S</li>
@@ -150,12 +150,12 @@
 
             <div class="card item">
                 <img src="../images/f20.jpg" style="width:100%">
-                <p class="name">{{name}}Coat</p>
-                <p class="price">Ksh<span> 500</span></p>
+                <p class="name">{{product_name}}Coat</p>
+                <p class="price">Ksh<span> {{price}}</span></p>
                 <p>Some text about the coat.</p>
                 <a class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
 
-                <div id="checkOrder" title={{name}}>
+                <div id="checkOrder" title={{product_name}}>
                     <h3 class="listHeading">Size:</h3>
                     <ul class="listOfSizes" id="size1">
                         <li><input type="checkbox" checked>Small- S</li>
@@ -207,7 +207,7 @@
         <h1>Thank you for the order</h1>
         <h3>We will have it delivered soon</h3>
     </div>
-
+{{/each}}
 {{/partial}}
 
 {{> layout.hbs}}
