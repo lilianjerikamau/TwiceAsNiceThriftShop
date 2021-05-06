@@ -33,9 +33,7 @@ public class User {
         this.username = username;
     }
 
-    public int getId() {
-        return id;
-    }
+
 
     public void setId(int id) {
         this.id = id;
@@ -61,6 +59,21 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO users(username, password) VALUES (:name, :password)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("username", this.username)
+                    .addParameter("password", this.password)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+
+    public int getId() {
+        return id;
     }
 
 //this method logs in user into their profile,it can have product items specific to them

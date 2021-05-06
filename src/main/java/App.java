@@ -1,6 +1,7 @@
 import static spark.Spark.*;
 
 import dao.Sql2oUserDao;
+import models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sql2o.Sql2o;
@@ -67,6 +68,20 @@ public class App {
         get("/login", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "login.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        // process form for signup
+        post("/users", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("name");
+            String password = request.queryParams("password");
+            User newUser = new User(name, password);
+            newUser.save();
+            model.put("fontColor", "green");
+            model.put("msg", "Seller Added Successfuly!!");
+            model.put("link", "/login");
+            model.put("linkto", "Back to Login");
+            return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
     }
 }
