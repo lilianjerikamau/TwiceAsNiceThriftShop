@@ -1,6 +1,7 @@
 import static spark.Spark.*;
 
 import dao.Sql2oUserDao;
+import models.Password;
 import models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -83,5 +84,27 @@ public class App {
             model.put("linkto", "Back to Login");
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+
+        post("/login", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = request.queryParams("name").toUpperCase();
+            String password = request.queryParams("password");
+
+            int found = Password.UserVerifier(name,password);
+
+            if(found == 0){
+                //Wrong username & Password
+                model.put("fontColor", "red");
+                model.put("msg", "Wrong Password");
+                model.put("link", "/login");
+                model.put("linkto", "Back to Login Page");
+            }else{
+                User user = User.login(name, password);
+                int userid = user.getId();
+                response.redirect("/user/"+userid);
+            }
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 }
