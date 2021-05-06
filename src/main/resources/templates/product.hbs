@@ -85,11 +85,12 @@
         <div class="item-menu">
             <!-- Product -->
             <div class="item">
-                <p class="name">{{name}}</p>
+                {{#each products}}
+                <p class="name">{{product_name}}</p>
                 <img src="../images/f4.jpg">
-                <a class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
+                <a  href="/products/new" class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
                 <p class="price">Ksh<span> 500</span></p>
-                <div id="checkOrder" title={{name}}>
+                <div id="checkOrder" title={{product_name}}>
                     <h3 class="listHeading">Size:</h3>
                     <ul class="listOfSizes" id="size1">
                         <li><input type="checkbox" checked>Small- S</li>
@@ -123,34 +124,8 @@
         <h1>Thank you for the order</h1>
         <h3>We will have it delivered soon</h3>
     </div>
-
+                {{/each}}
 {{/partial}}
 
 {{> layout.hbs}}
 
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        <div class="col-md-6 col-md-offset-3 vertical-center">-->
-<!--            <div class="thumbnail">-->
-<!--                <img src="{{product.img}}" alt="{{product.name}}">-->
-<!--                <div class="caption">-->
-<!--                    <h2>{{product.name}}</h2>-->
-<!--                    <p class="price">${{product.price}}</p>-->
-<!--                    <p>{{product.desc}}</p>-->
-<!--                    <form method="POST" action="../cart/{{id}}">-->
-<!--                        <label for="quantity">Select quantity</label>-->
-<!--                        <select class="form-control product-dropdown" id="quantity" name="quantity">-->
-<!--                            <option>1</option>-->
-<!--                            <option>2</option>-->
-<!--                            <option>3</option>-->
-<!--                            <option>4</option>-->
-<!--                            <option>5</option>-->
-<!--                        </select>-->
-<!--                        <button class="btn btn-default noPad" type="submit" value="Submit">Add To Cart</button>-->
-<!--                    </form>-->
-<!--                    <a href="/products" class="back-to-products btn btn-default" role="button">Back to all products</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->

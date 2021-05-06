@@ -68,9 +68,6 @@ public class Sql2oCartDao  implements CartDao{
     }
 
 
-
-
-
     @Override
     public void deleteByProductId(int product_id) {
         String sql = "DELETE from carts WHERE product_id=:product_id";

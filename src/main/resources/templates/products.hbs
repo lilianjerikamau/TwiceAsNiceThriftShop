@@ -1,0 +1,16 @@
+{{partial "content"}}
+<div class="container">
+<div class="row">
+    <div class="col-sm-4">
+        <h3>List Of Non-Endangered Animals</h3>
+        {{#if products}}
+            {{#each animals}}
+                <ul>
+                    <a href="/animals/{{id}}">{{name}}</a>
+                </ul>
+            {{/each}}
+        {{/if}}
+    </div>
+</div>
+</div>
+{{> layout.hbs}}
