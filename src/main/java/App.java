@@ -60,6 +60,11 @@ public class App {
 
         //Routes
 
+        get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
         get("/dahboard", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "index.hbs");
@@ -75,18 +80,13 @@ public class App {
             return new ModelAndView(model, "sellForm.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "login.hbs");
-        }, new HandlebarsTemplateEngine());
-
         // process form for signup
         post("/login", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             String username = req.queryParams("name");
             String password = req.queryParams("password");
-            List<User> endangered = userDao.getAll();
-            model.put("endangered", endangered);
+            List<User> user = userDao.getAll();
+            model.put("user", user);
             User newUser = new User(username,password);
             userDao.add(newUser);
             return new ModelAndView(model, "index.hbs");
