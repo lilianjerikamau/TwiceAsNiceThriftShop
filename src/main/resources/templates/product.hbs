@@ -130,7 +130,7 @@
             <div class="card item">
                 <img src="../images/f18.jpg" style="width:100%">
                 <p class="name">{{product_name}}Coat</p>
-                <p class="price">Ksh<span> 500</span></p>
+                <p class="price">Ksh<span>{{price}}</span></p>
                 <p>Some text about the coat.</p>
                 <a class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
 
@@ -144,15 +144,15 @@
                         <li><input type="checkbox">Extra Extra Large - XXL</li>
                     </ul>
                     <a class="btnStyle btnStyle3 listOver">Add Size</a>
-                    <h4 class="totalDialog" id="totalDialog1">Total: Ksh<span> 15</span></h4>
+                    <h4 class="totalDialog" id="totalDialog1">Total: Ksh<span>{{price}}</span></h4>
                 </div>
             </div>
 
             <div class="card item">
                 <img src="../images/f20.jpg" style="width:100%">
-                <p class="name">{{product_name}}Coat</p>
-                <p class="price">Ksh<span> {{price}}</span></p>
-                <p>Some text about the coat.</p>
+                <p class="name">{{product_name}}Denim Jacket</p>
+                <p class="price">Ksh<span>{{price}}</span></p>
+                <p>{{product.desc}}</p>
                 <a class="btnStyle3 btnStyle addToCart" id="addToCart">Add to Cart</a>
 
                 <div id="checkOrder" title={{product_name}}>
@@ -165,7 +165,7 @@
                         <li><input type="checkbox">Extra Extra Large - XXL</li>
                     </ul>
                     <a class="btnStyle btnStyle3 listOver">Add Size</a>
-                    <h4 class="totalDialog" id="totalDialog1">Total: Ksh<span> 15</span></h4>
+                    <h4 class="totalDialog" id="totalDialog1">Total: Ksh<span>{{price}}</span></h4>
                 </div>
             </div>
             <!-- End of Product -->

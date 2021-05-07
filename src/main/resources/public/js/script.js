@@ -24,16 +24,16 @@ $(document).ready(function() {
         var priceDialog = 0;
         $("#size"+x).children("li").children("input").each(function () {
             if($(this).is(":checked")){
-                priceDialog+=3;
+                priceDialog+=200;
             }
             $("#totalDialog"+x+">span").text(priceDialog);
             $(this).change(function () {
                 if ($(this).is(":checked")) {
-                    priceDialog += 3;
+                    priceDialog += 200;
                     console.log(priceDialog);
                     $("#totalDialog"+x+">span").text(priceDialog);
                 }else{
-                    priceDialog -= 3;
+                    priceDialog -= 200;
                     $("#totalDialog"+x+">span").text(priceDialog);
                 }
             })
@@ -45,10 +45,10 @@ $(document).ready(function() {
 
     $(".listOver").on("click", function () {
         var orderName = '<h3 class="orderName"><span>' + $(this).parent().siblings(".ui-dialog-titlebar").children("span").text() + '</span><a class="delBtn"><i class="fas fa-backspace"></i></a>' +'</h3>';
-        var orderIngredients = '<ul class="orderIngredients"></ul>';
+        var orderSizes = '<ul class="orderIngredients"></ul>';
         var orderPrice = '<h3 class="orderPrice"><span>' + $(this).parent().children(".totalDialog").children("span").text() + '</span>/=<h3>'
         var horizontalLine = '<hr>';
-        $(".cart").children("#listOfOrders").append("<li>" + orderName + orderIngredients + orderPrice + horizontalLine + "</li>");
+        $(".cart").children("#listOfOrders").append("<li>" + orderName + orderSizes + orderPrice + horizontalLine + "</li>");
 
         $(this).parent().children("ul").children().children("input:checked").each(function () {
             var selectedIngredient = $(this).parent().text();
