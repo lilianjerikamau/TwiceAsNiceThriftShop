@@ -6,27 +6,21 @@ import java.util.Objects;
 public class Cart {
     private int id;
     private int user_id;
-    private int product_id;
-    private byte[] image;
-    private String product_name;
-    private int price;
+   private int quantity;
+   private  int product_id;
 
-    public  Cart (int user_id, int product_id, byte[]image, String product_name,int price){
-        this.price = price;
+
+
+    public  Cart (int product_id,int quantity){
+
         this.user_id = user_id;
         this.product_id = product_id;
-        this.image =image;
-        this.product_name = product_name;
+
+
 
     }
 
-    public int getPrice() {
-        return price;
-    }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
     public int getId() {
         return id;
@@ -52,20 +46,12 @@ public class Cart {
         this.product_id = product_id;
     }
 
-    public byte[] getImage() {
-        return image;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    public String getProduct_name() {
-        return product_name;
-    }
-
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override
@@ -73,13 +59,11 @@ public class Cart {
         if (this == o) return true;
         if (!(o instanceof Cart)) return false;
         Cart cart = (Cart) o;
-        return getId() == cart.getId() && getUser_id() == cart.getUser_id() && getProduct_id() == cart.getProduct_id() && Arrays.equals(getImage(), cart.getImage()) && Objects.equals(getProduct_name(), cart.getProduct_name());
+        return getId() == cart.getId() && getUser_id() == cart.getUser_id() && getQuantity() == cart.getQuantity() && getProduct_id() == cart.getProduct_id();
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getId(), getUser_id(), getProduct_id(), getProduct_name());
-        result = 31 * result + Arrays.hashCode(getImage());
-        return result;
+        return Objects.hash(getId(), getUser_id(), getQuantity(), getProduct_id());
     }
 }

@@ -1,0 +1,428 @@
+input{
+    outline-color: #C98474;
+}
+
+.navbar {
+    margin: 0;
+    background-color: #b54a36;
+}
+
+.navbar-brand{
+    text-shadow: 0.1rem 0.1rem 0.5rem #333;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: lavender;
+}
+
+.navbar-brand:hover{
+    color: gold;
+}
+
+#navRight{
+    margin-left: 7em;
+}
+
+.navbar-nav a{
+    font-size: 1.4rem;
+    color: white;
+    margin-right: 60px;
+}
+
+.dropdown-menu{
+    background-color: #b54a36;
+}
+
+.btnStyle{
+    background-color: #C98474;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    padding: 7px 10px;
+    letter-spacing: .1em;
+    border-radius: 3px;
+    z-index: 1;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.btnStyle:hover{
+    background-color: #874C62;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, .16), 0px 6px 10px rgba(0, 0, 0, .23);
+    transform: scale(1.05, 1.05);
+    text-decoration: none;
+}
+
+.btnStyle2{
+    background-color: #707479;
+    text-decoration: none;
+}
+
+.btnStyle2:hover{
+    background-color: #C98474;
+}
+
+.btnStyle3{
+    background-color: #dc3545;
+}
+
+.btnStyle3:hover{
+    background-color: #F2D388;
+    color: white;
+    text-decoration: none;
+}
+
+.toggleCart{
+    position: relative;
+    padding: 0.6em;
+}
+
+.fa-circle {
+    font-size: 21px !important;
+    color: #C98474 ;
+}
+
+.num {
+    font-size: 12px;
+    padding: 3px 6px;
+    color: #fff;
+}
+
+.num, .fa-circle {
+    position: absolute;
+    right: -9px;
+    top: -9px;
+}
+
+.cart{
+    width: 300px;
+    position: fixed;
+    top: 60px;
+    bottom: 0px;
+    right: -300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    z-index: 1;
+    color: white;
+    background-color: #343a40b3;
+    padding: 30px;
+    box-shadow: 2px 0 20px 5px rgba(0, 0, 0, 0.24);
+
+    transition: all 0.25s ease-in-out;
+}
+
+.cart h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#cartToggle{
+    display: none;
+}
+
+/*where the magic happens*/
+#cartToggle:checked ~ div.body-content > .cart{
+    right: 0px;
+}
+
+#cartToggle:checked ~ div.body-content{
+    right: 100px;
+}
+
+#cartToggle:checked ~ div.body-content > .cart > a.finishOrder{
+    right: 5px;
+}
+
+.body-content{
+    position: relative;
+    right: 0px;
+    width: 80%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-around;
+
+    transition: all .2s ease-in-out;
+}
+
+/* orders */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+
+.item-menu{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.item{
+    width: 300px;
+    height: auto;
+    margin: 2em;
+    position: relative;
+}
+
+.item img{
+    width: 100%;
+    height: 80%;
+}
+
+.item img:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    transition: all 1.5s ease-in-out;
+}
+
+.name{
+    font-size: 23px;
+    text-align: center;
+    margin: 0.1em;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+    padding: 0.1em;
+}
+
+p{
+    padding: 1em;
+}
+
+.item:hover > .addToCart{
+    opacity: 1;
+}
+
+.addToCart {
+    opacity: 0;
+    position: absolute;
+    top: 70%;
+    left: 28%;
+    transition: all .2s ease-in-out;
+}
+
+#checkOrder {
+    padding: 9px 5px !important;
+    line-height: 2em;
+}
+
+.listHeading {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.listOfSizes{
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.listOfSizes input{
+    margin: 0px 5px;
+}
+
+.addSizeWrap{
+    display: flex;
+    margin: 5px 0;
+}
+
+.addSizeWrap input{
+    width: 60%;
+}
+
+.addSizeWrap a{
+    padding: 2px 6px;
+    margin: 0 5px;
+    font-size: 15px;
+}
+
+.cancelInput{
+    background-color: #b54a36;
+}
+
+.orderName {
+    padding: 13px 0px 8px 0px;
+}
+
+.orderPrice{
+    float: right;
+}
+
+hr {
+    margin: 25px 0 5px 0;
+}
+
+.delBtn {
+    float: right;
+    color: #F2D388;
+    cursor: pointer;
+}
+
+.delBtn:hover{
+    color: #dc3545;;
+}
+
+.totalDialog{
+    display: inline-block;
+    float: right;
+}
+
+.cart > h2 > span{
+    margin-left: 15px
+}
+
+.checkout {
+    width: 300px;
+    position: absolute;
+    bottom: 0;
+    left: 1px;
+    z-index: 2;
+    padding: 6px 28px;
+    border-radius: 0;
+    text-align: center;
+}
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+
+/* Style the images inside the grid */
+.column img {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.column img:hover {
+    opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The expanding image container (positioning is needed to position the close button and the text) */
+.container {
+    position: relative;
+    display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+}
+
+/* Closable button inside the image */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+#finishOrderDialog{
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#finalOrderList{
+    width: 40%;
+}
+
+#finalOrderList h3{
+    text-align: center;
+}
+
+#finalOrderList ol{
+    margin: 10px 15px;
+}
+
+#buyerInfo {
+    width: 100%;
+    margin: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+
+#buyerInfo label{
+    margin-bottom: 10px;
+    padding: 5px;
+    display: block;
+}
+
+#buyerInfo input {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+#buyerInfo .order{
+    display: block;
+    width: 100%;
+    border-style: none;
+    background-color: gray;
+}
+
+#buyerInfo .fa, .fas{
+    margin-right: 0.5em;
+}
+
+#thanksMessage{
+    padding: 20px;
+}
+
+/* Dialog Style */
+.ui-dialog {
+    z-index: 2;
+    box-shadow: 2px 0 20px 5px rgba(0, 0, 0, 0.24);
+    background-color: #fff;
+    padding: 30px;
+}
+
+.ui-draggable-handle {
+    position: absolute;
+    background-color: #b54a36;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    z-index: 999;
+}
+
+.ui-button {
+    background-color: #707479;
+    border: none;
+    border-radius: 3px;
+    padding: 3px 5px;
+    float: right;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.ui-button:hover{
+    background-color: #C98474;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, .16), 0px 6px 10px rgba(0, 0, 0, .23);
+    transform: scale(1.05, 1.05);
+}

@@ -2,6 +2,7 @@ package dao;
 
 import models.Cart;
 import models.Cart;
+import models.Product;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -14,10 +15,31 @@ public class Sql2oCartDao  implements CartDao{
     public Sql2oCartDao(Sql2o sql2o){
         this.sql2o = sql2o; //making the sql2o object available everywhere so we can call methods in it
     }
-
+//
+    @Override
+    public List<Product> getProductsByCartId(int product_id) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM carts WHERE product_id = :product_id")
+                    .addParameter("product_id", product_id)
+                    .executeAndFetch(Product.class);
+        }
+    }
+    @Override
+    public void add(Product product) {
+        String sql = "INSERT INTO carts (product_name,price) VALUES (:product_name, :price)";
+        try(Connection con = sql2o.open()){ //try to open a connection
+            int id = (int) con.createQuery(sql, true) //make a new variable
+                    .bind(product)
+                    .executeUpdate() //run it all
+                    .getKey(); //int id is now the row number (row “key”) of db
+            product.setId(id); //update object to set id now from database
+        } catch (Sql2oException ex) {
+            System.out.println(ex); //oops we have an error!
+        }
+    }
     @Override
     public void add(Cart cart) {
-        String sql = "INSERT INTO carts (cart_name, user_id, image, price) VALUES (:cart_name, :user_id, :image, :price)"; //raw sql
+        String sql = "INSERT INTO carts (quantity, user_id, product_id) VALUES (:quantity, :user_id, :product_id)";
         try(Connection con = sql2o.open()){ //try to open a connection
             int id = (int) con.createQuery(sql, true) //make a new variable
                     .bind(cart)
@@ -28,12 +50,11 @@ public class Sql2oCartDao  implements CartDao{
             System.out.println(ex); //oops we have an error!
         }
     }
-
     @Override
-    public List<Cart> getAll() {
+    public List<Product> getAll() {
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM users") //raw sql
-                    .executeAndFetch(Cart.class); //fetch a list
+            return con.createQuery("SELECT * FROM carts") //raw sql
+                    .executeAndFetch(Product.class); //fetch a list
         }
     }
 
@@ -46,39 +67,19 @@ public class Sql2oCartDao  implements CartDao{
         }
     }
 
-    @Override
-    public void update(int id, int user_id, Byte[] image, String product_name, int price, int product_id) {
-        String sql =  "UPDATE carts SET user_id = :user_id, product_name = :product_name, product_id = :product_id ,image = :image, price = :price WHERE id=:id";
-        try(Connection con = sql2o.open()){
-            con.createQuery(sql)
-                    .addParameter("user_id", user_id)
-                    .addParameter("product_id", product_id)
-                    .addParameter("image", image)
-                    .addParameter("price", price)
-                    .addParameter("product_name", product_name)
-                    .addParameter("id", id)
-                    .executeUpdate();
-        } catch (Sql2oException ex) {
-            System.out.println(ex);
-        }
-    }
-
-
 
     @Override
-    public void deleteById(int id) {
-        String sql = "DELETE from carts WHERE id=:id";
+    public void deleteByProductId(int product_id) {
+        String sql = "DELETE from carts WHERE product_id=:product_id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("id", id)
+                    .addParameter("product_id", product_id)
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
         }
     }
-
-    @Override
-    public void clearAllUsers() {
+    public void clearAllCarts() {
         String sql = "DELETE from carts";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
@@ -87,4 +88,6 @@ public class Sql2oCartDao  implements CartDao{
             System.out.println(ex);
         }
     }
+
+
 }

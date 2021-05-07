@@ -12,7 +12,6 @@ public interface UserDao {
 
 
 
-
     // LIST
     List<User> getAll();
 
@@ -21,7 +20,6 @@ public interface UserDao {
 
     // READ
     User findById(int id);
-
 
     // UPDATE
     void update(int id, String username,String password);

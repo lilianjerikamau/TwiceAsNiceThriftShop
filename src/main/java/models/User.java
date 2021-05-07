@@ -1,4 +1,5 @@
 package models;
+import org.sql2o.*;
 
 import java.util.Objects;
 
@@ -7,7 +8,7 @@ public class User {
     private String username;
     private int id;
   private  String password;
-  private String product_id;
+  private int product_id;
 
     public User(String username,String password ){
         this.username = username;
@@ -20,11 +21,11 @@ public class User {
         this.password = password;
     }
 
-    public String getProduct_id() {
+    public int getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(String product_id) {
+    public void setProduct_id(int product_id) {
         this.product_id = product_id;
     }
 
@@ -32,9 +33,7 @@ public class User {
         this.username = username;
     }
 
-    public int getId() {
-        return id;
-    }
+
 
     public void setId(int id) {
         this.id = id;
@@ -61,6 +60,15 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+
+
+    public int getId() {
+        return id;
+    }
+
+//this method logs in user into their profile,it can have product items specific to them
+
 
 
 

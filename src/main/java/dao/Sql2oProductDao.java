@@ -1,7 +1,6 @@
 package dao;
 
 import models.Product;
-import models.Product;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -17,7 +16,7 @@ public class Sql2oProductDao  implements ProductDao{
 
     @Override
     public void add(Product product) {
-        String sql = "INSERT INTO products (product_name, user_id, image, price) VALUES (:product_name, :user_id, :image, :price)"; //raw sql
+        String sql = "INSERT INTO products (product_name, price) VALUES (:product_name, :price)"; //raw sql
         try(Connection con = sql2o.open()){ //try to open a connection
             int id = (int) con.createQuery(sql, true) //make a new variable
                     .bind(product)
@@ -32,7 +31,7 @@ public class Sql2oProductDao  implements ProductDao{
     @Override
     public List<Product> getAll() {
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM users") //raw sql
+            return con.createQuery("SELECT * FROM products") //raw sql
                     .executeAndFetch(Product.class); //fetch a list
         }
     }
@@ -46,16 +45,14 @@ public class Sql2oProductDao  implements ProductDao{
         }
     }
 
+
     @Override
-    public void update(int id, String product_name, Byte[] image, int price, int user_id,int product_id) {
-            String sql =  "UPDATE carts SET user_id = :user_id, product_name = :product_name, product_id = :product_id,image = :image, price = :price WHERE id=:id";
+    public void update(int id, String product_name, double price) {
+            String sql =  "UPDATE carts SET  product_name = :product_name, price = :price WHERE id=:id";
             try(Connection con = sql2o.open()){
                 con.createQuery(sql)
-                        .addParameter("user_id", user_id)
-                        .addParameter("image", image)
                         .addParameter("price", price)
                         .addParameter("product_name", product_name)
-                        .addParameter("product_id", product_id)
                         .addParameter("id", id)
                         .executeUpdate();
             } catch (Sql2oException ex) {
@@ -77,7 +74,7 @@ public class Sql2oProductDao  implements ProductDao{
     }
 
     @Override
-    public void clearAllUsers() {
+    public void clearAllProducts() {
         String sql = "DELETE from products";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
